@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Kullanici
+
+@if (Model.YetkiID == 1)
+{
+  <!--begin::Menu Wrapper-->
+  <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+    <!--begin::Menu-->
+    <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+      <!--begin::Nav-->
+      <ul class="menu-nav">
+        <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here" data-menu-toggle="click" aria-haspopup="true">
+          <a asp-controller="Home" asp-action="Index" class="menu-link">
+            <span class="menu-text">Ana Sayfa</span>
+            <i class="menu-arrow"></i>
+          </a>
+        </li>
+        <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+          <a asp-controller="Universite" asp-action="Index" class="menu-link">
+            <span class="menu-text">Üniversiteler</span>
+            <span class="menu-desc"></span>
+            <i class="menu-arrow"></i>
+          </a>
+        </li>
+        <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+          <a asp-controller="Bolum" asp-action="Index" class="menu-link">
+            <span class="menu-text">Bölümler</span>
+            <span class="menu-desc"></span>
+            <i class="menu-arrow"></i>
+          </a>
+        </li>
+        <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+          <a asp-controller="Etiket" asp-action="Index" class="menu-link">
+            <span class="menu-text">Etiketler</span>
+            <span class="menu-desc"></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
+          <a asp-controller="Kullanici" asp-action="Index" class="menu-link">
+            <span class="menu-text">Kullanıcılar</span>
+            <span class="menu-desc"></span>
+          </a>
+        </li>
+      </ul>
+      <!--end::Nav-->
+    </div>
+    <!--end::Menu-->
+  </div>
+  <!--end::Menu Wrapper-->
+}
+else
+{
+  <!--begin::Menu Wrapper-->
+  <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+    <!--begin::Menu-->
+    <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+    </div>
+    <!--end::Menu-->
+  </div>
+  <!--end::Menu Wrapper-->
+}

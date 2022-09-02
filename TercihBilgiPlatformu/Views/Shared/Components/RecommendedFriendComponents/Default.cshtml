@@ -1,0 +1,47 @@
+﻿@model List<EntityLayer.Concrete.Kullanici>
+<!--begin::List Widget 1-->
+<div class="card card-custom card-shadowless bg-white">
+  <!--begin::Header-->
+  <div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label font-weight-bolder text-dark">Önerilen Arkadaşlar</span>
+      <span class="text-muted mt-3 font-weight-bold font-size-sm">En İyi 5 Seçenek</span>
+    </h3>
+  </div>
+  <!--end::Header-->
+  <!--begin::Body-->
+  <div class="card-body pt-8">
+    @foreach (var item in Model)
+    {
+      <!--begin::Item-->
+      <div class="d-flex align-items-center mb-5">
+        <!--begin::Symbol-->
+        <div class="symbol symbol-40 symbol-light-primary mr-5">
+          @if (item.Cinsiyet == true)
+          {
+            <div class="symbol-label" style="background-image: url('/assets/media/svg/avatars/007-boy-2.svg')"></div>
+          }
+          else if (item.Cinsiyet == false)
+          {
+            <div class="symbol-label" style="background-image: url('/assets/media/svg/avatars/005-girl-2.svg')"></div>
+          }
+        </div>
+        <!--end::Symbol-->
+        <!--begin::Text-->
+        <div class="d-flex flex-column font-weight-bold">
+          <span class="text-dark font-size-lg">@item.AdSoyad</span>
+          <span class="text-muted">@item.OkulAdi</span>
+          <span class="text-muted">@item.BolumAdi</span>
+        </div>
+        <!--end::Text-->
+      </div>
+      <!--end::Item-->
+      <div class="mb-lg-10">
+        <a href="/Arkadas/ArkadasEkle/@item.KullaniciID" class="btn btn-block btn-sm btn-light-primary font-weight-bolder text-uppercase py-4">Arkadaş Ekle</a>
+      </div>
+    }
+
+  </div>
+  <!--end::Body-->
+</div>
+<!--end::List Widget 1-->

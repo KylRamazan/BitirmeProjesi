@@ -1,0 +1,78 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model IPagedList<Kullanici>
+@{
+  ViewData["Title"] = "Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="overflow:auto; margin-left:10px; margin-right:10px;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ADI SOYADI</th>
+        <th scope="col">CİNSİYET</th>
+        <th scope="col">DOĞUM TARİHİ</th>
+        <th scope="col">OKUL ADI</th>
+        <th scope="col">BÖLÜM ADI</th>
+        <th scope="col">MEZUN DURUMU</th>
+        <th scope="col">E-MAİL</th>
+        <th scope="col">TELEFON</th>
+        <th scope="col">KULLANICI ADI</th>
+        <th scope="col">DURUM</th>
+        <th scope="col">KAYIT TARİHİ</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var item in Model)
+      {
+        <tr>
+          <td>@item.KullaniciID</td>
+          <td>@item.KullaniciAdi</td>
+          <td>@item.Cinsiyet</td>
+          <td>@item.DogumTarihi.Value.ToShortDateString()</td>
+          <td>@item.OkulAdi</td>
+          <td>@item.BolumAdi</td>
+          <td>
+            @if (item.Mezun == true)
+            {
+              <span class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">AKTİF</span>
+            }
+            else
+            {
+              <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">PASİF</span>
+            }
+          </td>
+          <td>@item.EMail</td>
+          <td>@item.Telefon</td>
+          <td>@item.KullaniciAdi</td>
+          <td>
+            @if (item.Silindi == false)
+            {
+              <span class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">AKTİF</span>
+            }
+            else
+            {
+              <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">PASİF</span>
+            }
+          </td>
+          <td>@item.KayitTarihi.Value.ToShortDateString()</td>
+          <td><a href="/Kullanici/KullaniciSil/@item.KullaniciID" class="btn btn-danger">Sil</a></td>
+          <td><a href="/Kullanici/KullaniciGuncelle/@item.KullaniciID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <div>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }),
+      new PagedListRenderOptions
+      {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+      })
+  </div>
+  <div><a href="\Kullanici\YeniKullaniciEkle" class="btn btn-primary">Kullanıcı Ekle</a></div>
+</div>

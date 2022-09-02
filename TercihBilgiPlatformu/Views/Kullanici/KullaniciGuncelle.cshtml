@@ -1,0 +1,57 @@
+﻿@model EntityLayer.Concrete.Kullanici
+
+@{
+  ViewData["Title"] = "KullaniciGuncelle";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:75px;" class="login-container order-2 order-lg-1 flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+  <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+    <!--begin::Signin-->
+    <div class="login-form">
+      <br />
+      @using (Html.BeginForm("KullaniciGuncellemeIslemi", "Kullanici", FormMethod.Post))
+      {
+        <label class="font-size-h6 font-weight-bolder text-dark">Kullanıcı ID</label>
+        @Html.TextBoxFor(x => x.KullaniciID, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Ad Soyad</label>
+        @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Cinsiyet</label>
+        @Html.TextAreaFor(x => x.Cinsiyet, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Doğum Tarihi</label>
+        @Html.TextAreaFor(x => x.DogumTarihi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Okul Adı</label>
+        @Html.TextAreaFor(x => x.OkulAdi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Bölüm Adı</label>
+        @Html.TextAreaFor(x => x.BolumAdi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Mezuniyet Durmu</label>
+        @Html.TextAreaFor(x => x.Mezun, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">E-Mail</label>
+        @Html.TextAreaFor(x => x.EMail, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Telefon</label>
+        @Html.TextAreaFor(x => x.Telefon, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Kullanıcı Adı</label>
+        @Html.TextAreaFor(x => x.KullaniciAdi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Şifre</label>
+        @Html.TextAreaFor(x => x.Sifre, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Silinme Durumu</label>
+        @Html.TextAreaFor(x => x.Silindi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+
+      }
+
+    </div>
+  </div>
+</div>

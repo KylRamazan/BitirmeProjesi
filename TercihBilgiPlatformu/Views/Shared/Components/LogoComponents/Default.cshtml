@@ -1,0 +1,16 @@
+﻿@model EntityLayer.Concrete.Kullanici
+
+  <!--begin::Logo-->
+  <div class="btn p-0 symbol symbol-40 symbol-success" href="?page=index" id="kt_quick_user_toggle">
+    <div class="symbol-label">
+      @if (Model.Cinsiyet == true)
+      {
+        <img alt="Logo" src="~/assets/media/svg/avatars/007-boy-2.svg" class="h-75 align-self-end" />
+      }
+      else if (Model.Cinsiyet == false)
+      {
+        <img alt="Logo" src="~/assets/media/svg/avatars/005-girl-2.svg" class="h-75 align-self-end" />
+      }
+    </div>
+  </div>
+  <!--end::Logo-->

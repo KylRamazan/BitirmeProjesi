@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.Universite
+@{
+  ViewData["Title"] = "Güncelle";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="margin-top:75px;" class="login-container order-2 order-lg-1 flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+  <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+    <!--begin::Signin-->
+    <div class="login-form">
+      <br />
+      @using (Html.BeginForm("UniversiteGuncellemeIslemi", "universite", FormMethod.Post))
+      {
+        <label class="font-size-h6 font-weight-bolder text-dark">Üniversite ID</label>
+        @Html.TextBoxFor(x => x.UniversiteID, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Universite Adı</label>
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Bölüm</label>
+        @Html.TextBoxFor(x => x.Bolumler, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+
+      }
+    </div>
+  </div>
+</div>

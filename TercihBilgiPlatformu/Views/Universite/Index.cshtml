@@ -1,0 +1,59 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model IPagedList<Universite>
+@{
+  ViewData["Title"] = "Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="overflow: auto; margin: 20px auto 20px auto;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ÜNİVERSİTE ADI</th>
+        <th scope="col">DURUM</th>
+        <th scope="col">KAYIT TARİHİ</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var item in Model)
+      {
+        <tr>
+
+          <td>@item.UniversiteID</td>
+          <td>@item.Ad</td>
+          <td>
+            @if (item.Silindi == false)
+            {
+              <span class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">AKTİF</span>
+            }
+            else
+            {
+              <span class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">PASİF</span>
+            }
+          </td>
+
+          <td>@item.KayitTarihi.Value.ToShortDateString()</td>
+          <td><a href="/Universite/UniversiteSil/@item.UniversiteID" class="btn btn-danger">Sil</a></td>
+          <td><a href="/Universite/UniversiteGuncelle/@item.UniversiteID" class="btn btn-success">GÜNCELLE</a></td>
+
+        </tr>
+      }
+    </tbody>
+  </table>
+  <div>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }),
+     new PagedListRenderOptions
+     {
+       LiElementClasses = new string[] { "page-item" },
+       PageClasses = new string[] { "page-link" }
+     })
+  </div>
+  <div>
+    <a href="/Universite/YeniUniversiteEkle" class="btn btn-primary">Üniversite Ekle</a>
+  </div>
+</div>

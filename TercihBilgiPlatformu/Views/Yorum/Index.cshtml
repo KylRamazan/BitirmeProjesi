@@ -1,0 +1,112 @@
+﻿@using EntityLayer.Concrete
+@using DataAccessLayer.Models
+
+@{
+  ViewData["Title"] = "Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+  var soru = (Soru)ViewData["Soru"];
+  var kullanicilar = (List<KullaniciYorumDTO>)ViewData["Kullanici"];
+}
+
+<!--begin::Container-->
+<div class="container">
+  <!--begin::Dashboard-->
+  <!--begin::Row-->
+  <div class="row mt-0 mt-lg-8">
+    <div class="col-xl-12">
+      <!--begin::Charts Widget 5-->
+      <!--begin::Card-->
+      <div class="card card-custom gutter-b">
+        <!--begin::Card header-->
+        <div class="card-header h-auto border-0">
+          <div style="margin:25px;" class="login-container order-2 order-lg-1 flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+            <!--begin::Wrapper-->
+            <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+              <!--begin::Signin-->
+              <div class="login-form">
+                <!--begin::Form group-->
+                <div class="form-group">
+                  <label class="font-size-h6 font-weight-bolder text-dark pt-5">Sorulan Soru</label>
+                  <textarea disabled class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" cols="40" rows="5" autocomplete="off">@soru.Icerik</textarea>
+                </div>
+                <div class="row">
+                  @foreach (var item in kullanicilar)
+                  {
+                    <!--begin::Card-->
+                    <div class="card card-custom" style="margin:10px; width:100%;">
+                      <div class="card-header">
+                        <div class="card-title">
+                          <div class="symbol symbol-40 symbol-light-primary mr-5">
+                            @if (item.Cinsiyet == true)
+                            {
+                              <div class="symbol-label" style="background-image: url('/assets/media/svg/avatars/007-boy-2.svg')"></div>
+                            }
+                            else if (item.Cinsiyet == false)
+                            {
+                              <div class="symbol-label" style="background-image: url('/assets/media/svg/avatars/005-girl-2.svg')"></div>
+                            }
+                          </div>
+                          <h3 class="card-label">
+                            @item.AdSoyad
+                            <small> - @item.BolumAdi</small>
+                            @if (item.Mezun == true)
+                            {
+                              <small> - Mezun</small>
+                            }
+                            else
+                            {
+                              <small> - Devam Ediyor</small>
+                            }
+                          </h3>
+                        </div>
+                      </div>
+                      <div class="card-body">@item.Cevap</div>
+                    </div>
+                    <!--end::Card-->
+                  }
+                </div>
+                <div class="login-form">
+                  <!--begin::Form-->
+                  <form class="form" id="kt_login_yorumYapma_form" action="~/Yorum/YorumYap/?SoruId=@soru.SoruID" method="post">
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                      <label class="font-size-h6 font-weight-bolder text-dark pt-5">Cevabınızı Yazınız</label>
+                      <textarea class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" cols="40" rows="3" name="Icerik" autocomplete="off"></textarea>
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Action-->
+                    <div class="pb-lg-0 pb-5">
+                      <button type="submit" id="kt_login_yorumYapma_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Yorum Yap</button>
+                    </div>
+                    <!--end::Action-->
+                  </form>
+                  <!--end::Form-->
+                </div>
+                <!--end::Form group-->
+              </div>
+              <!--end::Signin-->
+            </div>
+            <!--end::Wrapper-->
+          </div>
+        </div>
+        <!--end:: Card header-->
+      </div>
+      <!--end:: Card-->
+      <!--end:: Charts Widget 5-->
+    </div>
+  </div>
+  <!--end::Row-->
+  <!--end::Dashboard-->
+</div>
+<!--end::Container-->
+
+@section CustomStyles
+	{
+  <link href="~/custom/custom.css" rel="stylesheet" />
+}
+
+@section CustomJs
+	{
+  <script src="~/custom/custom.js"></script>
+}

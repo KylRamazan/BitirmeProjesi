@@ -1,0 +1,51 @@
+﻿@{
+	ViewData["Title"] = "EtiketSayfasi";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+	<div class="h6">Etiket seçiniz:</div>
+	<div class="tag-wrapper unselected">
+		<div class="tag-item" data-id="1">Yazılım</div>
+		<div class="tag-item" data-id="2">Tiyatro</div>
+		<div class="tag-item" data-id="3">Spor</div>
+		<div class="tag-item" data-id="4">Sanat</div>
+		<div class="tag-item" data-id="5">Tasarım</div>
+		<div class="tag-item" data-id="6">Sosyal Aktivite</div>
+		<div class="tag-item" data-id="7">Sosyal Yardımlaşma</div>
+		<div class="tag-item" data-id="8">Eğlence</div>
+		<div class="tag-item" data-id="9">Gezi</div>
+		<div class="tag-item" data-id="10">Matematik</div>
+		<div class="tag-item" data-id="11">Tarih</div>
+		<div class="tag-item" data-id="12">Edebiyat</div>
+		<div class="tag-item" data-id="13">dasdsa</div>
+		<div class="tag-item" data-id="14">dasdsa</div>
+		<div class="tag-item" data-id="15">dasdsa</div>
+		<div class="tag-item" data-id="16">dasdsa</div>
+		<div class="tag-item" data-id="17">dasdsa</div>
+		<div class="tag-item" data-id="18">dasdsa</div>
+		<div class="tag-item" data-id="19">dasdsa</div>
+		<div class="tag-item" data-id="20">dasdsa</div>
+	</div>
+	<div class="h6">Seçili etiketler:</div>
+	<div class="tag-wrapper selected">
+	</div>
+
+	<div class="w-100 d-flex justify-content-end">
+		<button class="btn btn-primary" type="button" id="saveTags">Etiketleri Kaydet</button>
+	</div>
+</div>
+
+
+
+
+@section CustomStyles
+	{
+	<link href="~/custom/custom.css" rel="stylesheet" />
+		}
+
+	@section CustomJs
+	{
+		<script src="~/custom/custom.js"></script>
+}

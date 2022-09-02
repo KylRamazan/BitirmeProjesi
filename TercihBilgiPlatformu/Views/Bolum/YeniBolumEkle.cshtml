@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.Bolum
+@{
+  ViewData["Title"] = "YeniBolum";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:75px;" class="login-container order-2 order-lg-1 flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+  <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+    <!--begin::Signin-->
+    <div class="login-form">
+      <form class="form" method="post">
+        <br />
+        <div class="form-group">
+          <label class="font-size-h6 font-weight-bolder text-dark">Bölüm Adı</label>
+          @Html.TextBoxFor(x => x.Ad, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+          <br />
+        </div>
+        <label class="font-size-h6 font-weight-bolder text-dark">Bölümler</label>
+        @Html.TextAreaFor(x => x.Silindi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <button class="btn btn-primary">Kaydet</button>
+      </form>
+    </div>
+  </div>
+</div>

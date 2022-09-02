@@ -1,0 +1,106 @@
+﻿@model List<EntityLayer.Concrete.Soru>
+@{ 
+  int sayac = 0;
+}
+
+<!--begin::List Widget 9-->
+<div class="card card-custom card-shadowless bg-white gutter-b">
+  <!--begin::Header-->
+  <div class="card-header align-items-center border-0 mt-4">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="font-weight-bolder text-dark">Sorulan Sorular</span>
+      <span class="text-muted mt-3 font-weight-bold font-size-sm">Sorulan Son 5 Soru</span>
+    </h3>
+  </div>
+  <!--end::Header-->
+  <!--begin::Body-->
+  <div class="card-body pt-4">
+    <!--begin::Timeline-->
+    <div class="timeline timeline-2 mt-3">
+
+      @foreach (var item in Model)
+      {
+        sayac++;
+        if (sayac == 1)
+        {
+          <!--begin::Item-->
+          <div class="timeline-item align-items-start">
+            <!--begin::Badge-->
+            <div class="timeline-badge">
+              <i class="fa fa-genderless text-warning icon-xl"></i>
+            </div>
+            <!--end::Badge-->
+            <!--begin::Text-->
+            <div class="timeline-content font-weight-bolder font-size-lg text-dark-75 pl-3"><a href="/Yorum/Index/@item.SoruID">@item.Icerik</a></div>
+            <!--end::Text-->
+          </div>
+          <!--end::Item-->
+        }
+        else if (sayac == 2)
+        {
+          <!--begin::Item-->
+          <div class="timeline-item align-items-start">
+            <!--begin::Badge-->
+            <div class="timeline-badge">
+              <i class="fa fa-genderless text-success icon-xl"></i>
+            </div>
+            <!--end::Badge-->
+            <!--begin::Content-->
+            <div class="timeline-content font-weight-bolder font-size-lg text-dark-75 pl-3"><a href="/Yorum/Index/@item.SoruID">@item.Icerik</a></div>
+            <!--end::Content-->
+          </div>
+          <!--end::Item-->
+        }
+        else if (sayac == 3)
+        {
+          <!--begin::Item-->
+          <div class="timeline-item align-items-start">
+            <!--begin::Badge-->
+            <div class="timeline-badge">
+              <i class="fa fa-genderless text-info icon-xl"></i>
+            </div>
+            <!--end::Badge-->
+            <!--begin::Desc-->
+            <div class="timeline-content font-weight-bolder font-size-lg text-dark-75 pl-3"><a href="/Yorum/Index/@item.SoruID">@item.Icerik</a></div>
+            <!--end::Desc-->
+          </div>
+          <!--end::Item-->
+        }
+        else if (sayac == 4)
+        {
+          <!--begin::Item-->
+          <div class="timeline-item align-items-start">
+            <!--begin::Badge-->
+            <div class="timeline-badge">
+              <i class="fa fa-genderless text-primary icon-xl"></i>
+            </div>
+            <!--end::Badge-->
+            <!--begin::Text-->
+            <div class="timeline-content font-weight-bolder font-size-lg text-dark-75 pl-3"><a href="/Yorum/Index/@item.SoruID">@item.Icerik</a></div>
+            <!--end::Text-->
+          </div>
+          <!--end::Item-->
+        }
+        else if (sayac == 5)
+        {
+          <!--begin::Item-->
+          <div class="timeline-item align-items-start">
+            <!--begin::Badge-->
+            <div class="timeline-badge">
+              <i class="fa fa-genderless text-danger icon-xl"></i>
+            </div>
+            <!--end::Badge-->
+            <!--begin::Desc-->
+            <div class="timeline-content font-weight-bolder text-dark-75 pl-3 font-size-lg"><a href="/Yorum/Index/@item.SoruID">@item.Icerik</a></div>
+            <!--end::Desc-->
+          </div>
+          <!--end::Item-->
+        }
+
+      }
+    </div>
+    <!--end::Timeline-->
+  </div>
+  <!--end: Card Body-->
+</div>
+<!--end: List Widget 9-->

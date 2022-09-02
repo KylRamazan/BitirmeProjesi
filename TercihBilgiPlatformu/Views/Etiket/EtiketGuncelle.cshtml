@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Etiket
+
+@{
+  ViewData["Title"] = "EtiketGuncelle";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:75px;" class="login-container order-2 order-lg-1 flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+  <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+    <!--begin::Signin-->
+    <div class="login-form">
+      <br />
+      @using (Html.BeginForm("EtiketGuncellemeIslemi", "Etiket", FormMethod.Post))
+      {
+        <label class="font-size-h6 font-weight-bolder text-dark">Etiket ID</label>
+        @Html.TextBoxFor(x => x.EtiketID, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Etiket Adı</label>
+        @Html.TextBoxFor(x => x.Adi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <label class="font-size-h6 font-weight-bolder text-dark">Silinme Durumu</label>
+        @Html.TextAreaFor(x => x.Silindi, new { @class = "form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" })
+        <br />
+        <button class="btn btn-primary">Güncelle</button>
+
+      }
+
+    </div>
+  </div>
+</div>

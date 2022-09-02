@@ -1,0 +1,67 @@
+﻿@model EntityLayer.Concrete.Kullanici
+
+<!--begin::Nav-->
+<ul class="nav flex-column">
+
+  @if (Model.YetkiID == 1)
+  {
+    <!--begin::Item-->
+    <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Arkadaşlar">
+      <a class="btn btn-icon btn-lg btn-borderless mb-1" id="kt_quick_actions_toggle" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Admin Paneli">
+        <span class="svg-icon svg-icon-xxl">
+          <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g id="Stockholm-icons-/-Layout-/-Layout-4-blocks" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+              <rect id="Rectangle-7" fill="#000000" x="4" y="4" width="7" height="7" rx="1.5"></rect>
+              <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" id="Combined-Shape" fill="#000000" opacity="0.3"></path>
+            </g>
+          </svg>
+          <!--end::Svg Icon-->
+        </span>
+      </a>
+    </li>
+
+
+    <!--end::Item-->
+  }
+  else
+  {
+    <!--begin::Item-->
+    <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Arkadaşlar">
+      <a asp-controller="Arkadas" asp-action="Index" class="nav-link btn btn-icon btn-lg btn-borderless" data-target="#kt_aside_tab_2" role="tab">
+        <span class="svg-icon svg-icon-xxl">
+          <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g id="Stockholm-icons-/-General-/-User" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+              <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" id="Mask" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+              <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" id="Mask-Copy" fill="#000000" fill-rule="nonzero"></path>
+            </g>
+          </svg>
+          <!--end::Svg Icon-->
+        </span>
+      </a>
+    </li>
+    <!--end::Item-->
+    <!--begin::Item-->
+    <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Mesajlar">
+      <a asp-controller="Mesaj" asp-action="Index" class="nav-link btn btn-icon btn-lg btn-borderless" data-target="#kt_aside_tab_4" role="tab">
+        <span class="svg-icon svg-icon-xxl">
+          <!--begin::Svg Icon | path:assets/media/svg/icons/General/Shield-check.svg-->
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g id="Stockholm-icons-/-Communication-/-Chat2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+              <polygon id="Path-75" fill="#000000" opacity="0.3" points="5 15 3 21.5 9.5 19.5"></polygon>
+              <path d="M13.5,21 C8.25329488,21 4,16.7467051 4,11.5 C4,6.25329488 8.25329488,2 13.5,2 C18.7467051,2 23,6.25329488 23,11.5 C23,16.7467051 18.7467051,21 13.5,21 Z M9,8 C8.44771525,8 8,8.44771525 8,9 C8,9.55228475 8.44771525,10 9,10 L18,10 C18.5522847,10 19,9.55228475 19,9 C19,8.44771525 18.5522847,8 18,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 C8,13.5522847 8.44771525,14 9,14 L14,14 C14.5522847,14 15,13.5522847 15,13 C15,12.4477153 14.5522847,12 14,12 L9,12 Z" id="Combined-Shape" fill="#000000"></path>
+            </g>
+          </svg>
+          <!--end::Svg Icon-->
+        </span>
+      </a>
+    </li>
+    <!--end::Item-->
+  }
+
+</ul>
+<!--end::Nav-->

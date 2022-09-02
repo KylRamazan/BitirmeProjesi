@@ -1,0 +1,226 @@
+﻿@using EntityLayer.Concrete
+
+@{
+  ViewData["Title"] = "Home Page";
+  var sorular = (List<Soru>)TempData["sorular"];
+}
+
+<!--begin::Container-->
+<div class="container">
+  <!--begin::Dashboard-->
+  <!--begin::Row-->
+  <div class="row mt-0 mt-lg-8">
+    <div class="col-xl-12">
+      <!--begin::Charts Widget 5-->
+      <!--begin::Card-->
+      <div class="card card-custom gutter-b">
+        <!--begin::Card header-->
+        <div class="card-header h-auto border-0">
+          <div style="margin:25px;" class="login-container order-2 order-lg-1 flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+            <!--begin::Wrapper-->
+            <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+              <!--begin::Signin-->
+              <div class="login-form">
+                <!--begin::Form-->
+                <form class="form" id="kt_login_yorumYapma_form" action="/Home/SoruEkle" method="post">
+                  <!--begin::Form group-->
+                  <div class="form-group">
+                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Sorunuzu Yazınız</label>
+                    <textarea class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" cols="40" rows="5" name="Icerik" autocomplete="off"></textarea>
+                  </div>
+                  <!--end::Form group-->
+
+                  <div class="form-group">
+                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Üniversite Etiketi Seçiniz</label>
+                    <div class="tag-wrapper unselected form-control  h-auto py-7 px-6 rounded-lg border-0">
+                      <div class="tag-item" data-id="1">Karadeniz Teknik Üniversitesi</div>
+                      <div class="tag-item" data-id="2">Hitit Üniversitesi</div>
+                      <div class="tag-item" data-id="3">Ankara Üniversitesi</div>
+                      <div class="tag-item" data-id="4">Orta Doğu Teknik Üniversitesi</div>
+                      <div class="tag-item" data-id="5">Hacettepe Üniversitesi</div>
+                    </div><br />
+                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Sorunuz İle İlgili Etiketi Seçiniz</label>
+                    <div class="tag-wrapper unselected form-control  h-auto py-7 px-6 rounded-lg border-0">
+                      <div class="tag-item" data-id="10">Akademik Kadro</div>
+                      <div class="tag-item" data-id="11">Eğitim Kalitesi</div>
+                      <div class="tag-item" data-id="12">Yaşam Standartları</div>
+                      <div class="tag-item" data-id="13">Kültür</div>
+                    </div>
+                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Seçili Etiketler</label>
+                    <div class="tag-wrapper selected form-control h-auto py-7 px-6 rounded-lg border-0">
+                    </div>
+                  </div>
+
+                  <!--begin::Action-->
+                  <div class="pb-lg-0 pb-5">
+                    <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Soruyu Sor</button>
+                  </div>
+                  <!--end::Action-->
+                </form>
+                <!--end::Form-->
+              </div>
+              <!--end::Signin-->
+            </div>
+            <!--end::Wrapper-->
+          </div>
+        </div>
+        <!--end:: Card header-->
+      </div>
+      <!--end:: Card-->
+      <!--end:: Charts Widget 5-->
+    </div>
+  </div>
+  <!--end::Row-->
+
+  <a href="/Home/OnerilenSorular" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Önerilen Soruları Listele</a>
+
+  <!--begin::Row-->
+  <div class="row mt-0 mt-lg-8">
+    <div class="col-xl-12">
+      <!--begin::Charts Widget 5-->
+      <!--begin::Card-->
+      <div class="card card-custom gutter-b">
+        <!--begin::Card header-->
+        <div class="card-header h-auto border-0">
+          <div class="card-title py-5">
+            <h3 class="card-label">
+              <span class="d-block text-dark font-weight-bolder">Önerilen Sorular</span>
+              <span class="d-block text-muted mt-2 font-size-sm">İlgi Alanlarınıza Göre Listelenen Sorular</span>
+            </h3>
+          </div>
+        </div>
+        <!--end:: Card header-->
+        <!--begin::Card body-->
+        <div class="card-body">
+          <div class="row">
+            <div class="tab-content mt-5" id="myTabTables5">
+              <!--begin::Tap pane-->
+              <div class="tab-pane fade show active" id="kt_tab_pane_5_3" role="tabpanel" aria-labelledby="kt_tab_pane_5_3">
+                <!--begin::Table-->
+                <div class="table-responsive">
+                  <table class="table table-borderless table-vertical-center">
+                    <thead>
+                      <tr>
+                        <th class="p-0 w-50px"></th>
+                        <th class="p-0 min-w-350px"></th>
+                        <th class="p-0 min-w-250px"></th>
+                        <th class="p-0 min-w-150px"></th>
+                        <th class="p-0 min-w-50px"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @if (sorular != null)
+                      {
+                        @foreach (var item in sorular)
+                        {
+                          <tr>
+                            <td class="py-5 pl-0">
+                              <div class="symbol symbol-50 symbol-light mr-2">
+                                <span class="symbol-label">
+                                  @if (item.IlgiAlaniEtiketi == 1)
+                                  {
+                                  <img src="/assets/media/svg/misc/008-infography.svg" class="h-50 align-self-center" alt="" />
+                                  }
+                                  else if (item.IlgiAlaniEtiketi == 2)
+                                  {
+                                <img src="/assets/media/svg/misc/003-puzzle.svg" class="h-50 align-self-center" alt="" />
+                                  }
+                                  else if (item.IlgiAlaniEtiketi == 3)
+                                  {
+                                <img src="/assets/media/svg/misc/009-hot-air-balloon.svg" class="h-50 align-self-center" alt="" />
+                                  }
+                                  else if (item.IlgiAlaniEtiketi == 4)
+                                  {
+                                <img src="/assets/media/svg/misc/013-rgb.svg" class="h-50 align-self-center" alt="" />
+                                  }
+                                </span>
+                              </div>
+                            </td>
+                            <td class="pl-0">
+                              <a href="/Yorum/Index/@item.SoruID" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">@item.Icerik</a>
+                            </td>
+                            <td class="text-center">
+                              @if (item.UniversiteEtiketi == 1)
+                              {
+                                <span class="label label-lg label-light-dark label-inline">Karadeniz Teknik Üniversitesi</span>
+                              }
+                              else if (item.UniversiteEtiketi == 2)
+                              {
+                                <span class="label label-lg label-light-dark label-inline">Hitit Üniversitesi</span>
+                              }
+                              else if (item.UniversiteEtiketi == 3)
+                              {
+                                <span class="label label-lg label-light-dark label-inline">Ankara Üniversitesi</span>
+                              }
+                              else if (item.UniversiteEtiketi == 4)
+                              {
+                                <span class="label label-lg label-light-dark label-inline">Orta Doğu Teknik Üniversitesi</span>
+                              }
+
+                            </td>
+                            <td class="text-center">
+                              @if (item.IlgiAlaniEtiketi == 1)
+                              {
+                                <span class="label label-lg label-light-danger label-inline">Akademik Kadro</span>
+                              }
+                              else if (item.IlgiAlaniEtiketi == 2)
+                              {
+                                <span class="label label-lg label-light-success label-inline">Eğitim Kalitesi</span>
+                              }
+                              else if (item.IlgiAlaniEtiketi == 3)
+                              {
+                                <span class="label label-lg label-light-warning label-inline">Yaşam Standartları</span>
+                              }
+                              else if (item.IlgiAlaniEtiketi == 4)
+                              {
+                                <span class="label label-lg label-light-info label-inline">Kültür</span>
+                              }
+                            </td>
+                            <td class="text-right pr-0">
+                              <a href="/Yorum/Index/@item.SoruID" class="btn btn-icon btn-light btn-sm">
+                                <span class="svg-icon svg-icon-md svg-icon-success">
+                                  <!--begin::Svg Icon | path:/assets/media/svg/icons/Navigation/Arrow-right.svg-->
+                                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                      <polygon points="0 0 24 0 24 24 0 24" />
+                                      <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
+                                      <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                    </g>
+                                  </svg>
+                                  <!--end::Svg Icon-->
+                                </span>
+                              </a>
+                            </td>
+                          </tr>
+                        }
+                      }
+                    </tbody>
+                  </table>
+                </div>
+                <!--end::Table-->
+              </div>
+              <!--end::Tap pane-->
+            </div>
+          </div>
+        </div>
+        <!--end:: Card body-->
+      </div>
+      <!--end:: Card-->
+      <!--end:: Charts Widget 5-->
+    </div>
+  </div>
+  <!--end::Row-->
+  <!--end::Dashboard-->
+</div>
+<!--end::Container-->
+
+
+@section CustomStyles
+	{
+  <link href="~/custom/custom.css" rel="stylesheet" />
+}
+
+@section CustomJs
+	{
+  <script src="~/custom/custom.js"></script>
+}

@@ -1,0 +1,109 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model IPagedList<Kullanici>
+
+@{
+  ViewData["Title"] = "Index";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <!--begin::Container-->
+  <div class="container" style="margin-top:50px;">
+
+    <!--begin::Row-->
+    <div class="row">
+      @foreach (var item in Model)
+      {
+
+        <!--begin::Col-->
+        <div class="col-xl-6">
+          <!--begin::Card-->
+          <div class="card card-custom gutter-b card-stretch">
+            <!--begin::Body-->
+            <div class="card-body pt-4">
+              <!--begin::User-->
+              <div class="d-flex align-items-center mb-7">
+                <!--begin::Pic-->
+                <div class="flex-shrink-0 mr-4 mt-lg-0 mt-3">
+                  <div class="symbol symbol-lg-75">
+                    @if (item.Cinsiyet == true)
+                    {
+                      <img alt="Pic" src="~/assets/media/svg/avatars/007-boy-2.svg" />
+                    }
+                    else if (item.Cinsiyet == false)
+                    {
+                      <img alt="Pic" src="~/assets/media/svg/avatars/005-girl-2.svg" />
+                    }
+                  </div>
+                  <div class="symbol symbol-lg-75 symbol-primary d-none">
+                    <span class="font-size-h3 font-weight-boldest">JM</span>
+                  </div>
+                </div>
+                <!--end::Pic-->
+                <!--begin::Title-->
+                <div class="d-flex flex-column">
+                  <a href="#" class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">@item.AdSoyad</a>
+                  <span class="text-muted font-weight-bold">@item.BolumAdi</span>
+                </div>
+              </div>
+              <!--end::User-->
+              <!--begin::Desc-->
+              <p class="mb-7">
+                @item.OkulAdi
+              </p>
+              <!--end::Desc-->
+              <!--begin::Info-->
+              <div class="mb-7">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="text-dark-75 font-weight-bolder mr-2">Email:</span>
+                  <a href="#" class="text-muted text-hover-primary">@item.EMail</a>
+                </div>
+                <div class="d-flex justify-content-between align-items-cente my-1">
+                  <span class="text-dark-75 font-weight-bolder mr-2">Telefon:</span>
+                  <a href="#" class="text-muted text-hover-primary">@item.Telefon</a>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="text-dark-75 font-weight-bolder mr-2">Mezun Durumu:</span>
+                  @if (item.Mezun == true)
+                  {
+                    <span class="text-muted font-weight-bold">Devam</span>
+                  }
+                  else if (item.Mezun == false)
+                  {
+                    <span class="text-muted font-weight-bold">Mezun</span>
+                  }
+
+                </div>
+              </div>
+              <!--end::Info-->
+              <div class="row">
+                <div class="col-6">
+                  <a href="/Arkadas/ArkadasCikar/@item.KullaniciID" class="btn btn-block btn-sm btn-light-warning font-weight-bolder text-uppercase py-4">Arkadaşlardan Çıkar</a>
+                </div>
+                <div class="col-6">
+                  <a href="#" class="btn btn-block btn-sm btn-light-success font-weight-bolder text-uppercase py-4" data-toggle="modal" data-target="#kt_chat_modal">Mesaj Gönder</a>
+                </div>
+              </div>
+            </div>
+            <!--end::Body-->
+          </div>
+          <!--end::Card-->
+        </div>
+        <!--end::Col-->
+
+      }
+    </div>
+    <!--end::Row-->
+    <div style="margin:15px;">
+      @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }),
+        new PagedListRenderOptions
+        {
+          LiElementClasses = new string[] { "page-item" },
+          PageClasses = new string[] { "page-link" }
+        })
+    </div>
+  </div>
+  <!--end::Container-->
